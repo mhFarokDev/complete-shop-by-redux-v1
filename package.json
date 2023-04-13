@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "server": "nodemon api/server.js",
+    "serverrun": "node api/server.js",
     "client": "npm start --prefix client",
     "start": "concurrently \"npm run server\" \" npm run client\""
   },
