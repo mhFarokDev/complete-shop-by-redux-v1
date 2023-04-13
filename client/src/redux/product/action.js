@@ -2,7 +2,7 @@
 import { DELETE_DATA_UPDATE, FILTER_DEL_CTG, FILTER_DEL_TAG, GET_ALL_CATEGORY, GET_ALL_TAG, GET_PRODUCT_FAIL, GET_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT, PRODUCT_REQUEST, PUT_CATEGORY, PUT_TAG } from "./actionType"
 import axios from "axios"
 import swal from 'sweetalert'
-
+import { API_URL } from "../../URL"
 
 
 
@@ -45,7 +45,7 @@ export const sliceDeleteData = (payload) =>{
 export const getAllProduct = () => async (dispatch) =>{
     try {
         dispatch(productRequest())
-        await axios.get('http://localhost:5050/api/v1/product')
+        await axios.get(`${API_URL}/product`)
         .then(res=>{
         dispatch(productGetSuccess(res.data))
         })
@@ -58,7 +58,7 @@ export const getAllProduct = () => async (dispatch) =>{
 
 export const createNewProduct =  (data) => async (dispatch) =>{
     try {
-        await axios.post('http://localhost:5050/api/v1/product', data)
+        await axios.post(`${API_URL}/product`, data)
         .then((res)=>{
             
             swal({
@@ -93,7 +93,7 @@ export const createNewProduct =  (data) => async (dispatch) =>{
 export const updateProductData =  (id, data, setShowModalUpdate) => async(dispatch) =>{
     
     try {
-        await axios.put(`http://localhost:5050/api/v1/product/${id}`, data)
+        await axios.put(`${API_URL}/product/${id}`, data)
         .then(res=>{
             dispatch(getAllProduct())
             setShowModalUpdate(false)
@@ -120,7 +120,7 @@ export const getSingleProduct = (id) => (dispatch) =>{
 // delete product
 export const deleteProduct = (id) => async (dispatch) =>{
     try {
-        await axios.delete(`http://localhost:5050/api/v1/product/${id}`)
+        await axios.delete(`${API_URL}/product/${id}`)
         .then(res=>{
             dispatch(sliceDeleteData(res.data))
         })
@@ -172,7 +172,7 @@ export const filterDeleteCtg = (payload) =>{
 // get all category
 export const getAllCategory = () => async (dispatch) => {
     try {
-        await axios.get('http://localhost:5050/api/v1/product/addcategory').then(res=>{
+        await axios.get(`${API_URL}/product/addcategory`).then(res=>{
             dispatch(getCategoryRequest(res.data))
         })
     } catch (error) {
@@ -184,7 +184,7 @@ export const getAllCategory = () => async (dispatch) => {
 // add new Category
 export const addNewCategory =  (ctgData, setCtg, setModalShow) => async (dispatch) =>{
     try {
-        await axios.post('http://localhost:5050/api/v1/product/addcategory', ctgData)
+        await axios.post(`${API_URL}/product/addcategory`, ctgData)
         .then(res=>{
             setCtg('')
             setModalShow(false)
@@ -203,7 +203,7 @@ export const addNewCategory =  (ctgData, setCtg, setModalShow) => async (dispatc
 // delete category
 export const deleteCatg = (id) => (dispatch) =>{
     try {
-        axios.delete(`http://localhost:5050/api/v1/product/addcategory/${id}`)
+        axios.delete(`${API_URL}/product/addcategory/${id}`)
         .then(res=>{
             swal("Poof! Your imaginary file has been deleted!", {
                 icon: "success",
@@ -245,7 +245,7 @@ export const filterdeleteTag = (payload) =>{
 // get all tag
 export const getAllTag = () => async (dispatch) =>{
     try {
-        axios.get('http://localhost:5050/api/v1/product/addtag').then(res =>{
+        axios.get(`${API_URL}/product/addtag`).then(res =>{
             dispatch(getTagRequest(res.data))
         }).catch(err => dispatch(getTagRequest(err.message)))
     } catch (error) {
@@ -257,7 +257,7 @@ export const getAllTag = () => async (dispatch) =>{
 // add new tag
 export const addNewTag =  (TagData, setTag, setModalShow) => async (dispatch) =>{
     try {
-        await axios.post('http://localhost:5050/api/v1/product/addtag', TagData)
+        await axios.post(`${API_URL}/product/addtag`, TagData)
         .then(res=>{
             
             setTag('')
@@ -277,7 +277,7 @@ export const addNewTag =  (TagData, setTag, setModalShow) => async (dispatch) =>
 // delete tag
 export const deleteTag = (id) => (dispatch) =>{
     try {
-        axios.delete(`http://localhost:5050/api/v1/product/addtag/${id}`)
+        axios.delete(`${API_URL}/product/addtag/${id}`)
         .then(res=>{
             swal("Poof! Your imaginary file has been deleted!", {
                 icon: "success",
