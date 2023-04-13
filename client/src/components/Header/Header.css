@@ -1,0 +1,29 @@
+nav ul{
+    margin:10px auto;
+    text-align: left;
+
+}
+nav ul li{
+    list-style: none;
+    display: inline;
+}
+nav ul li a {
+    padding: 10px 30px;
+    margin-right: 10px;
+    color: #000000 !important;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+nav ul li a:hover{
+    color: #DA1C5C !important;
+}
+a.adminBTN {
+    background: #DA1C5C;
+    color: #fff !important;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+a.adminBTN:hover {
+    color: #fff !important;
+}

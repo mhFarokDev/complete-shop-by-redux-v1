@@ -1,0 +1,22 @@
+a,
+a:hover{
+    color: black !important;
+    text-decoration: none !important;
+}
+.tags a{
+    background-color: rgb(7, 65, 25);
+    color: rgb(255, 255, 255) !important;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+img.card-img {
+    height: 250px;
+    object-fit: contain;
+}
+h4.cardProductTitle {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
